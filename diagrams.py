@@ -355,7 +355,7 @@ def mercor_wide(d):
             o.append(f'<rect x="{x + 30:g}" y="{y - 27}" width="10" height="10" class="d-dot"/>')
             body, lines = block(x + 60, y, phrase, "d-body", 36, col_w - 112)
             o.append(body)
-            y += lines * 36 * 1.32 + 46
+            y += lines * 36 * 1.32 + 36
         check_bounds(y - 52, box_top + box_h, "mercor wide column", margin=8)
     check_bounds(box_top + box_h, 900, "mercor wide")
     return "".join(o)
