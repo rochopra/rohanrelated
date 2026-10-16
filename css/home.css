@@ -1,0 +1,74 @@
+/* Homepage-only scene and visual gallery. Shared tokens and chrome live in main.css. */
+.home{font-size:14px}
+.home main a{color:inherit;text-decoration:none}
+.home-hero{position:relative;margin:0 20px;height:calc(100svh - 120px);min-height:490px;max-height:950px;overflow:hidden;border-radius:4px;background:#708c87}
+.hero-landscape{width:100%;height:100%;object-fit:cover;object-position:center 55%;position:absolute;inset:0;animation:scene-arrive 1.3s ease-out both}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,#203b3610 40%,#1c302d85 100%)}
+.home h1{position:absolute;bottom:32px;left:3%;font-family:var(--font-wordmark);font-size:clamp(26px,3vw,48px);font-weight:500;letter-spacing:-1.5px;line-height:1;margin:0;color:var(--scene-text)}
+.scene-link{position:absolute;display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;border:1px solid #fff6;border-radius:30px;backdrop-filter:blur(14px);background:color-mix(in srgb, var(--ink) 72%, transparent);color:var(--scene-text)!important;font-size:12px;transition:background .25s,transform .25s}
+.scene-link>span{width:27px;height:27px;border:1px solid #fff9;border-radius:50%;display:grid;place-items:center;font-size:19px;font-weight:400}
+.scene-link:hover,.scene-link:focus-visible{background:color-mix(in srgb, var(--ink) 90%, transparent);transform:translateY(-4px)}
+.scene-work{left:19%;top:39%}
+.scene-film{left:51%;top:26%}
+.scene-sound{right:13%;top:61%}
+.explore-link{position:absolute;right:3%;bottom:32px;display:flex;align-items:center;gap:22px;color:var(--scene-text)!important;font-size:12px}
+.explore-link>span{display:grid;place-items:center;border:1px solid #fff9;width:40px;height:40px;border-radius:50%;font-size:22px;transition:transform .3s}
+.explore-link:hover>span{transform:rotate(45deg)}
+.selected-section{max-width:calc(var(--content-width) + 2 * var(--gutter));padding:var(--band) var(--gutter) calc(var(--band) + 20px);margin:auto;scroll-margin-top:20px}
+.section-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+.home h2{font-family:var(--font-body);font-size:17px;font-weight:500;letter-spacing:0;margin:0}
+.section-heading>span{font-family:var(--font-mono);font-size:10px;color:var(--ash)}
+.project-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:55px 60px;align-items:start}
+.project-mercor{margin-top:90px}
+.project-sound{margin-top:90px}
+.project-art{position:relative;aspect-ratio:1.35;display:grid;place-items:center;overflow:hidden;border-radius:3px;background:var(--frame-sage);padding:35px}
+.project-art>img{width:100%;height:auto;border-radius:4px;box-shadow:0 25px 45px #18383226;transform:rotate(-5deg);transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.project-mercor .project-art{background:var(--frame-sand)}
+.project-mercor img{transform:rotate(5deg)}
+.project:hover .project-art>img{transform:rotate(0deg) scale(1.04)}
+.project-open{position:absolute;bottom:17px;right:17px;width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:var(--wall);color:var(--ink);font-size:20px;transition:transform .3s}
+.project:hover .project-open{transform:rotate(45deg)}
+.project-caption{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:17px}
+.home h3{font-family:var(--font-body);font-size:15px;font-weight:500;letter-spacing:0;margin:0}
+.project-caption>span{font-size:11px;color:var(--ash)}
+.film-art{background:#292d2b}
+.mars{position:absolute;width:55%;aspect-ratio:1;border-radius:50%;right:-8%;top:8%;background:radial-gradient(circle at 25% 30%,#daaf83 0,#b77954 35%,#694a38 66%,#272e29 80%);box-shadow:-12px 0 50px #d5a57b15;transition:transform .8s}
+.orbit{position:absolute;border:1px solid #b5bda745;width:120%;height:50%;border-radius:50%;transform:rotate(-40deg)}
+.film-title{font-family:var(--font-wordmark);font-size:clamp(30px,4vw,62px);font-weight:650;letter-spacing:-2px;line-height:.95;color:#f1e8d5;position:relative;justify-self:start}
+.project-film:hover .mars{transform:translate(-10px,8px)}
+.sound-art{background:#b89572}
+.record{width:80%;aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#30322d 0px,#30322d 2px,#42453d 3px,#30322d 4px);box-shadow:12px 18px 25px #38291840;display:grid;place-items:center;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.record>span{width:32%;aspect-ratio:1;border-radius:50%;background:#e4d1ac;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:Georgia,serif;font-size:clamp(18px,3vw,40px);line-height:1.1;position:relative}
+.record>span:after{content:"";position:absolute;left:48%;bottom:13%;width:5px;height:5px;background:#30322d;border-radius:50%}
+.record small{font-family:var(--font-mono);font-size:6px;letter-spacing:2px;margin-top:4px}
+.project-sound:hover .record{transform:rotate(60deg)}
+.home a:focus-visible{outline:2px solid var(--safelight);outline-offset:5px}
+.home-hero a:focus-visible{outline-color:var(--scene-text)}
+@keyframes scene-arrive{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:scale(1)}}
+@media(min-width:1700px){.home-hero{max-width:1660px;margin:auto}}
+@media(max-width:700px){.home-hero{margin:0 10px;min-height:520px;height:75svh}
+.hero-landscape{object-position:65% center}
+.home h1{bottom:80px;left:6%;font-size:30px}
+.explore-link{left:6%;right:auto;bottom:24px;font-size:11px;gap:14px}
+.explore-link>span{width:32px;height:32px;font-size:18px}
+.scene-work{left:9%;top:30%}
+.scene-film{left:auto;right:9%;top:17%}
+.scene-sound{right:12%;top:54%}
+.scene-link{font-size:11px;padding:7px 13px 7px 7px;gap:8px}
+.scene-link>span{width:23px;height:23px}
+.selected-section{padding:40px var(--gutter) 50px}
+.section-heading{margin-bottom:22px}
+.project-grid{gap:32px 20px;grid-template-columns:1fr 1fr}
+.project-mercor,.project-sound{margin-top:45px}
+.project-art{aspect-ratio: .9;padding:15px}
+.project-caption{display:block;margin-top:12px}
+.home h3{font-size:13px}
+.project-caption>span{font-size:10px;display:block;margin-top:4px}
+.project-open{width:25px;height:25px;font-size:16px;right:9px;bottom:9px}
+.film-title{font-size:24px;letter-spacing:-1px}
+.mars{width:75%;top:15%;right:-22%}
+.record{width:100%}
+.record>span{font-size:18px;width:38%}
+.record small{font-size:5px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){.home *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.project:hover .project-art>img,.project-sound:hover .record,.project-film:hover .mars,.scene-link:hover{transform:none}}
