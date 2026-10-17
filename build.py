@@ -76,6 +76,25 @@ def md_to_html(body):
     return "\n\n".join(out)
 
 
+# Shared navigation is rendered at build time, so links also work without JS.
+def render_site_chrome(page, route):
+    section = route.split("/")[0]
+    for name in ("header", "footer"):
+        fragment = (ROOT / "templates" / "partials" / f"{name}.html").read_text().rstrip()
+        if name == "header":
+            target = {"work": "/work/egnyte/", "film": "/film/",
+                      "sound": "/sound/", "notes": "/notes/", "about": "/about/"}.get(section)
+            if target:
+                fragment = fragment.replace(f'href="{target}"', f'href="{target}" aria-current="page"')
+        begin, end = f"<!-- SITE_{name.upper()}:BEGIN -->", f"<!-- SITE_{name.upper()}:END -->"
+        if begin not in page or end not in page:
+            sys.exit(f"error: {route or '/'} is missing shared {name} markers")
+        head, rest = page.split(begin, 1)
+        _, tail = rest.split(end, 1)
+        page = head + begin + "\n" + fragment + "\n  " + end + tail
+    return page
+
+
 # ---------- generation ----------
 
 def render_note(meta, body_html, number, source_name):
@@ -161,24 +180,12 @@ def main():
         path.write_text(head + b0 + svg + b1 + tail)
         print(f"  built {slug} diagram ({len(svg)} bytes) into {path.relative_to(ROOT)}")
 
-    # 3b. the same two diagrams, reused on the home page. One artwork, two
-    #     placements. The home copies are decorative: the entry title and
-    #     sentence beside them already carry the meaning, so announcing the
-    #     full <desc> again would just be noise in a screen reader.
-    home = ROOT / "index.html"
-    src = home.read_text()
-    for slug, svg in svgs.items():
-        deco = re.sub(r'role="img" aria-labelledby="[^"]*"', 'aria-hidden="true" focusable="false"', svg)
-        deco = re.sub(r'<title id="[^"]*">.*?</title>', '', deco)
-        deco = re.sub(r'<desc id="[^"]*">.*?</desc>', '', deco)
-        b0, b1 = f"<!-- HOMEDIAGRAM:{slug}:BEGIN -->", f"<!-- HOMEDIAGRAM:{slug}:END -->"
-        if b0 not in src or b1 not in src:
-            sys.exit(f"error: index.html is missing the {slug} home markers")
-        head, rest = src.split(b0, 1)
-        _, tail = rest.split(b1, 1)
-        src = head + b0 + deco + b1 + tail
-    home.write_text(src)
-    print(f"  built {len(svgs)} diagrams into index.html (decorative copies)")
+    # Render the same header/footer on every static and generated page.
+    routes = STATIC_PAGES + [f"notes/{m['slug']}/" for m, _, _ in published]
+    for route in routes:
+        path = ROOT / route / "index.html"
+        path.write_text(render_site_chrome(path.read_text(), route))
+    print(f"  rendered shared navigation on {len(routes)} pages")
 
     # 4. sitemap
     urls = [f"https://rohanrelated.com/{p}" for p in STATIC_PAGES]
