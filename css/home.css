@@ -72,3 +72,61 @@
 .record small{font-size:5px;letter-spacing:1px}}
 @media(prefers-reduced-motion:reduce){.home *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 .project:hover .project-art>img,.project-sound:hover .record,.project-film:hover .mars,.scene-link:hover{transform:none}}
+
+/* Hero tagline */
+.hero-tagline{position:absolute;left:3%;bottom:calc(32px + clamp(26px,3vw,48px) + 14px);margin:0;max-width:min(520px,70%);color:var(--scene-text);font-size:clamp(14px,1.2vw,17px);line-height:1.35;text-shadow:0 1px 14px #10241f99;text-wrap:balance}
+@media(max-width:700px){.hero-tagline{left:6%;bottom:calc(80px + 30px + 10px);max-width:88%;font-size:14px}}
+
+/* Egnyte and Mercor card art: abstract and interactive. No logos, no interface screens. */
+/* Egnyte: glowing network scene */
+.egnyte-art{background:linear-gradient(#7fd1b90f 1px,#0000 1px) 0 0/26px 26px,linear-gradient(90deg,#7fd1b90f 1px,#0000 1px) 0 0/26px 26px,radial-gradient(90% 80% at 50% 0%,#17403a,#0b1b19 70%);box-shadow:inset 0 0 0 1px #7fd1b933}
+.radar{position:absolute;left:50%;top:50%;width:130%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
+.radar:before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle,#7fd1b922 0 1px,#0000 1px 7.5%)}
+.radar:after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#7fd1b900 0 300deg,#7fd1b918 340deg,#7fd1b93a 360deg)}
+.sort{position:relative;width:78%;aspect-ratio:1.4}
+.links{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.links path{fill:none;stroke-width:.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;opacity:.85}
+.links .dg{opacity:.4}
+.links .l0{stroke:#8fe0c6}.links .l1{stroke:#f0a06a}.links .l2{stroke:#fff7e6}.links .lx{stroke:#8fe0c6;opacity:.35}
+.sort i{position:absolute;left:calc(var(--gx) * 1%);top:calc(var(--gy) * 1%);width:6.5%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:#8fe0c6;box-shadow:0 0 0 2px #0b1b1466,0 0 14px 3px #8fe0c699}
+.sort i.b{background:#f0a06a;box-shadow:0 0 0 2px #0b1b1466,0 0 14px 3px #f0a06a99}
+.sort i.c{background:#fff7e6;box-shadow:0 0 0 2px #0b1b1466,0 0 14px 3px #fff7e688}
+/* Mercor: design board where generated layouts are ranked and annotated */
+.mercor-art{background:radial-gradient(circle,#2336301f 1px,#0000 1.7px) 0 0/16px 16px,#e5dfd4}
+.deck{position:relative;width:84%;aspect-ratio:1.4}
+.deck .t{position:absolute;left:calc(var(--rx) * 1%);top:calc(var(--ry) * 1%);width:46%;aspect-ratio:1.5;border-radius:clamp(4px,.7vw,9px);box-shadow:0 10px 22px #2336302b,0 0 0 1px #23363018}
+.deck .t:after{content:attr(data-r);position:absolute;left:6%;top:8%;display:grid;place-items:center;width:1.9em;aspect-ratio:1;border-radius:50%;background:#f4efe3;color:#233e35;font:600 clamp(6px,.85vw,10px)/1 var(--font-mono)}
+.deck .a{background:radial-gradient(circle at 72% 40%,#c4824f 0 21%,#0000 22%),linear-gradient(#233e35,#233e35) 10% 72%/46% 7% no-repeat,linear-gradient(#233e35aa,#233e35aa) 10% 86%/30% 5% no-repeat,#f4efe3;outline:2px solid #c4824f;outline-offset:5px}
+.deck .a:before{content:"";position:absolute;inset:-7px;pointer-events:none;background:linear-gradient(#c4824f,#c4824f) 0 0/6px 6px no-repeat,linear-gradient(#c4824f,#c4824f) 100% 0/6px 6px no-repeat,linear-gradient(#c4824f,#c4824f) 0 100%/6px 6px no-repeat,linear-gradient(#c4824f,#c4824f) 100% 100%/6px 6px no-repeat}
+.deck .b{background:linear-gradient(#a9bfb3,#a9bfb3) 12% 14%/40% 72% no-repeat,linear-gradient(#f4efe3,#f4efe3) 58% 14%/30% 10% no-repeat,linear-gradient(#f4efe3aa,#f4efe3aa) 58% 34%/30% 5% no-repeat,linear-gradient(#f4efe3aa,#f4efe3aa) 58% 46%/22% 5% no-repeat,#233e35}
+.deck .c{background:repeating-radial-gradient(circle at 50% 125%,#daaf83 0 2px,#0000 2px 12px),#14201c}
+.deck .d{background:radial-gradient(circle at 50% 50%,#233e35 0 24%,#0000 25%),linear-gradient(90deg,#c4824f 0 50%,#e5dfd4 50%)}
+.deck .pin{position:absolute;left:46.5%;top:1.5%;width:clamp(7px,1.1vw,12px);aspect-ratio:1;border-radius:50%;background:#c4824f;box-shadow:0 0 0 3px #f4efe3;z-index:2}
+.deck .note{position:absolute;left:52%;top:-15%;width:36%;aspect-ratio:2.6;border-radius:clamp(4px,.6vw,8px);background:linear-gradient(#233e35,#233e35) 12% 30%/60% 12% no-repeat,linear-gradient(#233e3555,#233e3555) 12% 62%/40% 12% no-repeat,#f4efe3;box-shadow:0 8px 18px #2336302e;z-index:2}
+.deck .sp{position:absolute;width:clamp(10px,1.6vw,18px);aspect-ratio:1;background:#c4824f;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+.deck .s1{right:-5%;top:-9%}
+.deck .s2{left:-6%;bottom:-6%;background:#233e35}
+@media(prefers-reduced-motion:no-preference){
+.sort i{transition:left .85s cubic-bezier(.34,1.5,.5,1),top .85s cubic-bezier(.34,1.5,.5,1);transition-delay:calc(var(--n) * 18ms);animation:node-glow 3.4s ease-in-out infinite;animation-delay:calc(var(--n) * -140ms)}
+.links path{transition:stroke-dashoffset .9s ease .5s}
+.radar:after{animation:radar-sweep 9s linear infinite}
+.deck .t{transition:left .8s cubic-bezier(.34,1.45,.5,1),top .8s cubic-bezier(.34,1.45,.5,1);transition-delay:calc(var(--i) * 60ms)}
+.deck .pin,.deck .note{transition:opacity .4s ease .7s,transform .5s cubic-bezier(.34,1.6,.5,1) .7s}
+.deck .pin{animation:pin-ping 2.2s ease-out infinite}
+.deck .sp{animation:twinkle 2.8s ease-in-out infinite}
+.deck .s2{animation-delay:-1.4s}
+html.js .project-egnyte:not(.in) .sort i{left:calc(var(--sx) * 1%);top:calc(var(--sy) * 1%)}
+html.js .project-egnyte:not(.in) .links path{stroke-dashoffset:1;transition-duration:.2s;transition-delay:0s}
+html.js .project-mercor:not(.in) .deck .t{left:calc(var(--ux) * 1%);top:calc(var(--uy) * 1%)}
+html.js .project-mercor:not(.in) .deck .pin,html.js .project-mercor:not(.in) .deck .note{opacity:0;transform:scale(.5);transition-delay:0s}
+@media(hover:hover){
+.project-egnyte:hover .sort i{left:calc(var(--sx) * 1%);top:calc(var(--sy) * 1%)}
+.project-egnyte:hover .links path{stroke-dashoffset:1;transition-duration:.2s;transition-delay:0s}
+.project-mercor:hover .deck .t{left:calc(var(--ux) * 1%);top:calc(var(--uy) * 1%)}
+.project-mercor:hover .deck .pin,.project-mercor:hover .deck .note{opacity:0;transform:scale(.5);transition-delay:0s}
+}}
+@keyframes radar-sweep{to{transform:rotate(360deg)}}
+@keyframes node-glow{0%,100%{opacity:.78}50%{opacity:1}}
+@keyframes pin-ping{0%{box-shadow:0 0 0 3px #f4efe3,0 0 0 3px #c4824f99}70%,100%{box-shadow:0 0 0 3px #f4efe3,0 0 0 13px #c4824f00}}
+@keyframes twinkle{0%,100%{transform:scale(.55) rotate(0)}50%{transform:scale(1) rotate(25deg)}}
+@media(max-width:700px){.sort{width:92%}.deck{width:90%}}
