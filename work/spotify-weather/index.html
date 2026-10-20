@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spotify × Weather · does weather shape what Spain streams? · Rohan Chopra</title>
+  <meta name="description" content="Case study: a team data science project testing whether daily temperature predicts the mood of the music Spain streams on Spotify, 2018 to 2022. Weather explained at most 0.2% of the variation.">
+  <link rel="canonical" href="https://rohanrelated.com/work/spotify-weather/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Spotify × Weather · does weather shape what Spain streams?">
+  <meta property="og:description" content="A team data science project on whether daily temperature predicts the mood of the music Spain streams. It barely does.">
+  <meta property="og:url" content="https://rohanrelated.com/work/spotify-weather/">
+  <meta property="og:image" content="https://rohanrelated.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://rohanrelated.com/assets/og.png">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- SITE_HEADER:BEGIN -->
+  <header class="site-header">
+    <a class="wordmark" href="/">rohanrelated<span aria-hidden="true">®</span></a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/work/egnyte/" >Work</a>
+      <a href="/film/">Film</a>
+      <a href="/sound/">Sound</a>
+      <a href="/notes/">Notes</a>
+      <a href="/about/">About</a>
+      <a href="mailto:rochopra99@gmail.com">Contact ↗</a>
+    </nav>
+  </header>
+  <!-- SITE_HEADER:END -->
+
+  <main id="main">
+    <header class="article-header">
+      <div class="wrap">
+        <p class="slate">Case 03 <span class="dim">· Spotify × Weather · Data science · Fall 2025</span></p>
+        <h1>Does the weather change what Spain listens to?</h1>
+        <p class="standfirst">We tested whether daily temperature predicts the mood of the music Spain streams. Across four years of Spotify charts, it barely does.</p>
+        <dl class="spec">
+          <dt>Format</dt><dd>Team project · Data Science in Cognitive Systems, UC San Diego</dd>
+          <dt>Timeline</dt><dd>Fall 2025</dd>
+          <dt>Data</dt><dd>Three public datasets: Spotify Top 200 charts for Spain, track audio features, and daily temperature for Madrid, 2018 to 2022</dd>
+          <dt>Tools</dt><dd>Python, pandas, scikit-learn, statsmodels, seaborn</dd>
+        </dl>
+      </div>
+    </header>
+
+    <article class="band">
+      <div class="wrap prose">
+        <p class="kicker reveal">Context</p>
+        <div class="reveal">
+          <p>Most research on what people listen to looks at the listener: age, personality, social setting. Far less looks at the environment. One study of UK listeners found that more upbeat, higher-intensity songs tracked warmer, drier days. We wanted to know whether the same pattern shows up in Spain.</p>
+          <p>We limited the analysis to a single country to keep culture and day length roughly constant. Spain suited that: streaming there is dense, and its climate is fairly uniform.</p>
+        </div>
+
+        <p class="kicker reveal">Problem</p>
+        <div class="reveal">
+          <p>Spotify doesn't publish how listeners feel, only what ranks on the charts. So we measured mood indirectly, through the audio features of the charting songs: valence (how positive a track sounds), energy, and danceability.</p>
+          <p>The harder problem was everything else that moves the charts. Release days, holidays, viral hits, and changes at Spotify itself all shift those numbers, and any weather signal had to be found underneath them.</p>
+        </div>
+
+        <p class="kicker reveal">What we did</p>
+        <div class="reveal">
+          <p>We built a Spain-by-day dataset from three public sources: Spotify's daily Top 200 charts for Spain, a database of audio features for tracks, and daily temperature readings for Madrid. Each needed cleaning before it could be joined. About 90,900 of the 449,259 chart rows had no stream count and were dropped. Extreme stream counts were trimmed using the interquartile range. Artist and song names were standardized, by lowercasing and stripping featured-artist credits and parentheses, so the same track could be matched across sources.</p>
+          <p>Before modeling anything, we explored the data: daily streams over time, genre mix by season, how energy and valence vary across seasons, and temperature against average valence across 1,424 days. Then we fit linear regressions and ordinary least squares models, including a composite mood index that averages valence, energy, and danceability.</p>
+        </div>
+
+        <blockquote class="pullquote reveal">Three public datasets, 1,424 days, and one question: how much of the mood of what Spain streams can the weather explain?</blockquote>
+
+        <ul class="stats reveal">
+          <li><span class="n">1,424</span><span class="l">Days analyzed</span></li>
+          <li><span class="n">80,019</span><span class="l">Track-day rows modeled</span></li>
+          <li><span class="n">≤0.2%</span><span class="l">Variation in mood explained by weather</span></li>
+        </ul>
+
+        <figure class="hung hung--wide chart-figure reveal">
+          <div class="frame chart-pair">
+            <img src="/assets/work/spotify-weather/scatter.webp" width="690" height="490" loading="lazy" alt="Scatter plot of average daily temperature against average music valence in Spain. A fitted line rises slightly from left to right through a wide cloud of points.">
+            <img src="/assets/work/spotify-weather/boxplot.webp" width="590" height="490" loading="lazy" alt="Box plots of average daily valence on colder and warmer days. The two boxes overlap heavily, with warmer days slightly higher.">
+          </div>
+          <figcaption>
+            <p class="slate">Results <span class="dim">· temperature and valence</span></p>
+            <p>The first chart plots each day as a dot, with a fitted line. The second shows valence on colder and warmer days, split at the median temperature. Both show a small shift inside a much larger spread.</p>
+          </figcaption>
+        </figure>
+
+        <p class="kicker reveal">What we found</p>
+        <div class="reveal">
+          <p>The relationship was real in the technical sense and negligible in practice. Across the daily data, the fitted line rises about 0.02 on a 0 to 1 valence scale for every 10 degrees Celsius of warming. Daily valence ranged from roughly 0.3 to 0.7, so the slope is small next to the spread. Splitting days into colder and warmer halves gave two distributions that overlap heavily.</p>
+          <p>The models said the same thing in numbers. Temperature explained about 0.1% of the variation in the mood index, and season explained about 0.2%. Both were statistically significant, because the sample was large, but the effects were small. The direction of the temperature effect even differed between the valence-only model and the composite mood index, and winter tracks scored slightly higher than summer ones, the opposite of what we had predicted.</p>
+          <p>Total daily streams also fell sharply during 2019, possibly because of a change in how Spotify reports its charts, which makes the streams result hard to interpret.</p>
+        </div>
+
+        <div class="callout reveal">
+          <p class="label">Finding</p>
+          <p>Weather explained at most 0.2% of the variation in musical mood. What Spain streams looks shaped far more by culture, labels, and the platform than by the forecast.</p>
+        </div>
+
+        <p class="kicker reveal">Limits</p>
+        <div class="reveal">
+          <p>Mood here is an indirect measure. Audio features describe the songs on the chart, not the feelings of the people streaming them, and what reaches the chart depends on labels, playlists, and viral moments. The temperature data came from Madrid alone, which may not match the weather where most listeners were. Matching songs across datasets was imperfect, and some tracks matched under more than one genre. We also did not control for holidays or release days, even though the research we reviewed flagged both as likely confounders.</p>
+          <p>A stronger test would use listener-level logs and local weather, add explicit controls for holidays and release days, and check for non-linear effects on very hot or very cold days, which we hypothesized but did not test.</p>
+          <p class="muted">The full report and notebook are available on request.</p>
+        </div>
+      </div>
+    </article>
+
+    <nav class="case-pager" aria-label="Case studies">
+      <div class="wrap">
+        <p class="slate">Case studies</p>
+        <ul>
+          <li><a href="/work/egnyte/"><span class="n">Case 01</span> <span class="t">Research that became a roadmap</span> <span class="d">Egnyte · UX research</span></a></li>
+          <li><a href="/work/mercor/"><span class="n">Case 02</span> <span class="t">Teaching a system what good design is</span> <span class="d">Mercor · AI design evaluation</span></a></li>
+          <li class="here"><a href="/work/spotify-weather/"><span class="n">Case 03</span> <span class="t">Does the weather change what Spain listens to?</span> <span class="d">Spotify × Weather · Data science</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </main>
+
+  <!-- SITE_FOOTER:BEGIN -->
+  <footer class="site-footer">
+    <a href="mailto:rochopra99@gmail.com">Contact ↗</a>
+    <nav aria-label="Footer navigation">
+      <a href="/work/egnyte/">Egnyte</a>
+      <a href="/work/mercor/">Mercor</a>
+      <a href="https://www.linkedin.com/in/rohanchopra06">LinkedIn ↗</a>
+      <a href="/assets/rohan-chopra-resume.pdf" download>Résumé ↓</a>
+      <a href="#main">↑ Top</a>
+    </nav>
+  </footer>
+  <!-- SITE_FOOTER:END -->
+</body>
+</html>

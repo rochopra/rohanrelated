@@ -130,3 +130,35 @@ html.js .project-mercor:not(.in) .deck .pin,html.js .project-mercor:not(.in) .de
 @keyframes pin-ping{0%{box-shadow:0 0 0 3px #f4efe3,0 0 0 3px #c4824f99}70%,100%{box-shadow:0 0 0 3px #f4efe3,0 0 0 13px #c4824f00}}
 @keyframes twinkle{0%,100%{transform:scale(.55) rotate(0)}50%{transform:scale(1) rotate(25deg)}}
 @media(max-width:700px){.sort{width:92%}.deck{width:90%}}
+
+/* Data and visuals section */
+.scene-data{left:36%;top:67%}
+.project-cssa{margin-top:90px}
+.spotify-art{background:linear-gradient(180deg,#a9cbd6 0%,#ecdcbd 58%,#f0b27a 100%)}
+.spotify-art .sun{position:absolute;right:11%;top:13%;width:16%;aspect-ratio:1;border-radius:50%;background:#fff3d6;box-shadow:0 0 0 10px #fff3d655,0 0 42px 14px #fff3d6aa}
+.bars{position:relative;display:flex;align-items:flex-end;gap:2.4%;width:84%;height:60%;margin-top:10%}
+.bars i{flex:1;height:calc(var(--h) * 1%);border-radius:99px 99px 2px 2px;background:var(--c);transform-origin:50% 100%}
+.cssa-art{background:#e8d9c3}
+.reels{display:flex;align-items:flex-end;gap:4%;width:58%;margin-bottom:12%}
+.reels i{position:relative;flex:1;aspect-ratio:9/16;border-radius:clamp(4px,.7vw,8px);box-shadow:0 12px 24px #23363028}
+.reels i:nth-child(1){background:#233e35;--r:-6deg}
+.reels i:nth-child(2){background:#c4824f;--r:0deg;margin-bottom:9%}
+.reels i:nth-child(3){background:#a9bfb3;--r:6deg}
+.reels i:nth-child(1),.reels i:nth-child(3){transform:rotate(var(--r))}
+.reels i:nth-child(2):after{content:"";position:absolute;left:50%;top:50%;width:34%;aspect-ratio:1;transform:translate(-38%,-50%);background:#f4efe3;clip-path:polygon(0 0,100% 50%,0 100%)}
+.handle{position:absolute;left:0;right:0;bottom:11%;text-align:center;font-family:var(--font-mono);font-size:clamp(9px,1vw,12px);letter-spacing:.04em;color:#233e35}
+@media(prefers-reduced-motion:no-preference){
+.bars i{transition:transform .7s cubic-bezier(.34,1.4,.5,1);transition-delay:calc(var(--n) * 22ms)}
+.reels i{transition:transform .7s cubic-bezier(.34,1.4,.5,1)}
+html.js .project-spotify:not(.in) .bars i{transform:scaleY(.06)}
+html.js .project-cssa:not(.in) .reels i{transform:translateY(40%)}
+@media(hover:hover){
+.project-spotify:hover .bars i{animation:eq 1.1s ease-in-out infinite;animation-delay:calc(var(--n) * -70ms)}
+.project-cssa:hover .reels i:nth-child(1){transform:rotate(-9deg) translateY(-7%)}
+.project-cssa:hover .reels i:nth-child(2){transform:translateY(-9%)}
+.project-cssa:hover .reels i:nth-child(3){transform:rotate(9deg) translateY(-7%)}
+}}
+@keyframes eq{0%,100%{transform:scaleY(1)}50%{transform:scaleY(var(--s))}}
+@media(max-width:700px){.scene-data{left:10%;top:61%}
+.project-cssa{margin-top:45px}
+.reels{width:66%}}

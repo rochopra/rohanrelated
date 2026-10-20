@@ -1209,3 +1209,28 @@ html.js figure.hung.reveal.in {
   .contact-list .k { display: block; }
   .standfirst { font-size: 1.0625rem; }
 }
+
+/* ---------- chart pairs: report figures hung in a letterbox ---------- */
+.chart-pair {
+  display: grid;
+  grid-template-columns: 1.17fr 1fr;
+  gap: clamp(8px, 1.6vw, 18px);
+  align-items: center;
+}
+.chart-pair img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .chart-pair { grid-template-columns: 1fr; }
+}
+
+/* Wide figures break out of the prose column symmetrically (centered on it),
+   so they never push past the right edge of the viewport. */
+figure.hung--wide {
+  margin-left: calc((100% - min(72rem, calc(100vw - 2 * var(--gutter)))) / 2);
+  margin-right: 0;
+}
