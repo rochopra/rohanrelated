@@ -32,7 +32,7 @@ CONTENT = ROOT / "content" / "notes"
 TEMPLATE = (ROOT / "templates" / "note.html").read_text()
 
 STATIC_PAGES = [
-    "", "work/egnyte/", "work/mercor/",
+    "", "work/egnyte/", "work/mercor/", "work/spotify-weather/",
     "film/", "film/journey-to-mars/", "sound/", "notes/", "about/",
 ]
 
