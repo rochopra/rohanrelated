@@ -27,8 +27,7 @@ Ten fixed pages, one stylesheet, one 30-line script. A static build deploys anyw
 ├── assets/
 │   ├── fonts/                      Self-hosted woff2 (Syne, Instrument Sans, IBM Plex Mono)
 │   ├── favicon.svg                 Slate mark
-│   ├── og.png                      Social preview (1200×630)
-│   └── rohan-chopra-resume.pdf     Résumé download
+│   └── og.png                      Social preview (1200×630)
 ├── sitemap.xml
 └── robots.txt
 ```
@@ -140,7 +139,7 @@ Semantic landmarks, skip link, visible focus states, `aria-current` nav, alt tex
 
 Assets Rohan is supplying. Every slot renders as a labeled placeholder, so the site is shippable and legible before any of them land. Eleven plates total, down from sixteen.
 
-1. **Résumé PDF** . the file supplied to the project was a ZIP-of-images container, not a PDF. `assets/rohan-chopra-resume.pdf` is now a valid single-page PDF rebuilt from the page image inside it, verified downloading as `application/pdf` from the header, footer, and About links. The source image is 952x1260 px, readable on screen and soft in print. Replace with a direct PDF export when available, same filename.
+1. ~~Résumé PDF~~ . removed on purpose. The site does not host a résumé; applications carry their own. Keep it that way so a stale PDF can never be public.
 2. ~~Diagram artwork~~ . done. Both diagrams are inline SVG generated from `diagrams.py`; nothing to supply. Previously specified as:
 
    | Artwork | Export | Used on |
