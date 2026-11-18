@@ -76,6 +76,22 @@ def md_to_html(body):
     return "\n\n".join(out)
 
 
+import hashlib
+
+
+def version_assets(page):
+    """Tag local CSS/JS links with a short content hash (?v=...), so a changed
+    file is always fetched fresh instead of served from a browser's cache."""
+    def tag(m):
+        attr, path = m.group(1), m.group(2)
+        f = ROOT / path.lstrip("/")
+        if not f.exists():
+            return m.group(0)
+        h = hashlib.md5(f.read_bytes()).hexdigest()[:8]
+        return f'{attr}="{path}?v={h}"'
+    return re.sub(r'(href|src)="(/(?:css|js)/[\w.-]+\.(?:css|js))(?:\?v=[0-9a-f]+)?"', tag, page)
+
+
 # Shared navigation is rendered at build time, so links also work without JS.
 def render_site_chrome(page, route):
     section = route.split("/")[0]
@@ -187,7 +203,7 @@ def main():
     routes = STATIC_PAGES + [f"notes/{m['slug']}/" for m, _, _ in published]
     for route in routes:
         path = ROOT / route / "index.html"
-        path.write_text(render_site_chrome(path.read_text(), route))
+        path.write_text(version_assets(render_site_chrome(path.read_text(), route)))
     print(f"  rendered shared navigation on {len(routes)} pages")
 
     # 4. sitemap
