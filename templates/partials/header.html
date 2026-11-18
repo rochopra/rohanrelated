@@ -1,11 +1,26 @@
   <header class="site-header">
     <a class="wordmark" href="/">rohanrelated<span aria-hidden="true">®</span></a>
     <nav class="site-nav" aria-label="Main navigation">
-      <a href="/work/egnyte/">Work</a>
-      <a href="/film/">Film</a>
-      <a href="/sound/">Sound</a>
-      <a href="/notes/">Notes</a>
-      <a href="/about/">About</a>
+      <div class="nav-item has-menu">
+        <a class="nav-top" data-section="work" href="/work/egnyte/">Work</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-work" aria-label="Show all work"><span aria-hidden="true">▾</span></button>
+        <ul class="nav-menu" id="menu-work">
+          <li><a data-route="work/egnyte/" href="/work/egnyte/">Egnyte <span>UX research</span></a></li>
+          <li><a data-route="work/mercor/" href="/work/mercor/">Mercor <span>AI design evaluation</span></a></li>
+          <li><a data-route="work/spotify-weather/" href="/work/spotify-weather/">Spotify × Weather <span>Data science</span></a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-menu">
+        <a class="nav-top" data-section="film" href="/film/">Film</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-film" aria-label="Show all films"><span aria-hidden="true">▾</span></button>
+        <ul class="nav-menu" id="menu-film">
+          <li><a data-route="film/journey-to-mars/" href="/film/journey-to-mars/">Journey to Mars <span>2022</span></a></li>
+          <li><a data-route="film/digital-redlining/" href="/film/digital-redlining/">Digital Redlining <span>2025</span></a></li>
+        </ul>
+      </div>
+      <a class="nav-top" data-section="sound" href="/sound/">Sound</a>
+      <a class="nav-top" data-section="notes" href="/notes/">Notes</a>
+      <a class="nav-top" data-section="about" href="/about/">About</a>
       <a href="mailto:rochopra99@gmail.com">Contact ↗</a>
     </nav>
   </header>

@@ -265,10 +265,50 @@ p {
 .site-header a:hover, .site-footer a:hover { color: var(--link-hover); }
 .site-nav a { padding-block: 0.375rem; }
 .site-nav a[aria-current] { text-decoration: underline; text-underline-offset: 0.4em; }
+/* Dropdown menus under Work and Film. Opens on hover (mouse), on keyboard
+   focus, and via the caret button (touch). Works without JavaScript for
+   hover and keyboard; the caret only adds the touch/click path. */
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-caret {
+  appearance: none; background: none; border: 0; margin: 0;
+  padding: 0.375rem 0.3rem; min-width: 1.75rem; min-height: 1.75rem;
+  color: var(--ash); font: inherit; font-size: 0.625rem; line-height: 1; cursor: pointer;
+  transition: color var(--motion-duration) ease;
+}
+.nav-caret:hover { color: var(--link-hover); }
+.nav-caret span { display: inline-block; transition: transform var(--motion-duration) ease; }
+.nav-item.open .nav-caret span { transform: rotate(180deg); }
+.nav-menu {
+  display: none;
+  position: absolute; top: 100%; left: -0.75rem; z-index: 30;
+  min-width: 15rem; margin: 0; padding: 0.4rem 0; list-style: none;
+  background: var(--wall); border: 1px solid var(--seam); border-radius: var(--radius);
+  box-shadow: 0 18px 40px #18383222;
+}
+.nav-menu li { margin: 0; }
+.site-nav .nav-menu a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1.25rem;
+  padding: 0.6rem 1rem; white-space: nowrap;
+}
+.site-nav .nav-menu a:hover, .site-nav .nav-menu a:focus-visible { background: var(--mat); }
+.site-nav .nav-menu a[aria-current] { text-decoration: none; background: var(--mat); }
+.nav-menu a span { font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.04em; color: var(--ash); }
+.nav-item.open .nav-menu,
+.nav-item:has(:focus-visible) .nav-menu { display: block; }
+@media (hover: hover) {
+  .nav-item:hover .nav-menu { display: block; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-item.open .nav-menu,
+  .nav-item:has(:focus-visible) .nav-menu,
+  .nav-item:hover .nav-menu { animation: nav-menu-in 140ms ease-out; }
+  @keyframes nav-menu-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
 @media (max-width: 700px) {
   :root { --wordmark-size: 1.25rem; --nav-gap: 1rem; --nav-size: 0.6875rem; }
   .site-header { flex-wrap: wrap; gap: var(--space-sm); padding-block: var(--space-md); }
-  .site-nav { width: 100%; justify-content: space-between; gap: 0.25rem 0.75rem; }
+  .site-nav { width: 100%; justify-content: space-between; gap: 0.25rem 0.5rem; }
+  .nav-menu { min-width: 13.5rem; left: 0; }
 }
 
 /* ---------- hero ---------- */

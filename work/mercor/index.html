@@ -23,11 +23,26 @@
   <header class="site-header">
     <a class="wordmark" href="/">rohanrelated<span aria-hidden="true">®</span></a>
     <nav class="site-nav" aria-label="Main navigation">
-      <a href="/work/egnyte/" aria-current="page">Work</a>
-      <a href="/film/">Film</a>
-      <a href="/sound/">Sound</a>
-      <a href="/notes/">Notes</a>
-      <a href="/about/">About</a>
+      <div class="nav-item has-menu">
+        <a class="nav-top" aria-current="page" href="/work/egnyte/">Work</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-work" aria-label="Show all work"><span aria-hidden="true">▾</span></button>
+        <ul class="nav-menu" id="menu-work">
+          <li><a href="/work/egnyte/">Egnyte <span>UX research</span></a></li>
+          <li><a aria-current="page" href="/work/mercor/">Mercor <span>AI design evaluation</span></a></li>
+          <li><a href="/work/spotify-weather/">Spotify × Weather <span>Data science</span></a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-menu">
+        <a class="nav-top" href="/film/">Film</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-film" aria-label="Show all films"><span aria-hidden="true">▾</span></button>
+        <ul class="nav-menu" id="menu-film">
+          <li><a href="/film/journey-to-mars/">Journey to Mars <span>2022</span></a></li>
+          <li><a href="/film/digital-redlining/">Digital Redlining <span>2025</span></a></li>
+        </ul>
+      </div>
+      <a class="nav-top" href="/sound/">Sound</a>
+      <a class="nav-top" href="/notes/">Notes</a>
+      <a class="nav-top" href="/about/">About</a>
       <a href="mailto:rochopra99@gmail.com">Contact ↗</a>
     </nav>
   </header>
@@ -38,9 +53,9 @@
       <div class="wrap">
         <p class="slate">Case 02 <span class="dim">· Mercor · AI design evaluation · May 2026 to present</span></p>
         <h1>Teaching a system what good design is</h1>
-        <p class="standfirst">As an AI Designer at Mercor, I evaluate AI-generated design work and write the critiques that turn tacit design judgment into feedback a model can learn from.</p>
+        <p class="standfirst">At Mercor, I evaluate AI-generated design work and write the critiques that turn tacit design judgment into feedback a model can learn from.</p>
         <dl class="spec">
-          <dt>Role</dt><dd>AI Designer</dd>
+          <dt>Role</dt><dd>AI/ML Data Annotation and Evaluation Specialist; Designer</dd>
           <dt>Timeline</dt><dd>May 2026 to present</dd>
           <dt>Scope</dt><dd>500+ outputs evaluated, 1,000+ structured critiques written</dd>
           <dt>Frameworks</dt><dd>Six distinct evaluation frameworks, each with its own criteria</dd>
@@ -102,6 +117,7 @@
         <p class="kicker reveal">What changed</p>
         <div class="reveal">
           <p>The critiques feed into improving the quality and human-centeredness of AI design output. The habit transferred, too. I now review my own design, film, and audio work the same way, in writing, before anyone else sees it.</p>
+          <p>For context on the wider field: Mercor builds expert-graded benchmarks that test whether AI models can do professional work, such as its <a href="https://www.mercor.com/apex/">APEX benchmark family</a>. My part is a different and much smaller piece, evaluating AI-generated design, but it rests on the same idea. You only learn how good a model is when people who know the domain grade it carefully.</p>
           <p class="muted">The evaluation work is described here in my own words, at the level of method. Details of client materials stay private.</p>
         </div>
       </div>

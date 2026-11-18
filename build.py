@@ -82,10 +82,13 @@ def render_site_chrome(page, route):
     for name in ("header", "footer"):
         fragment = (ROOT / "templates" / "partials" / f"{name}.html").read_text().rstrip()
         if name == "header":
-            target = {"work": "/work/egnyte/", "film": "/film/",
-                      "sound": "/sound/", "notes": "/notes/", "about": "/about/"}.get(section)
-            if target:
-                fragment = fragment.replace(f'href="{target}"', f'href="{target}" aria-current="page"')
+            # Mark the current section's top-level link and, when the route is
+            # one of the dropdown entries, that entry too. Then drop the hooks.
+            if section:
+                fragment = fragment.replace(f'data-section="{section}"', f'data-section="{section}" aria-current="page"')
+            if route:
+                fragment = fragment.replace(f'data-route="{route}"', f'data-route="{route}" aria-current="page"')
+            fragment = re.sub(r' data-(?:section|route)="[^"]*"', "", fragment)
         begin, end = f"<!-- SITE_{name.upper()}:BEGIN -->", f"<!-- SITE_{name.upper()}:END -->"
         if begin not in page or end not in page:
             sys.exit(f"error: {route or '/'} is missing shared {name} markers")
