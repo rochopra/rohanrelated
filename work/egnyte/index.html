@@ -23,11 +23,26 @@
   <header class="site-header">
     <a class="wordmark" href="/">rohanrelated<span aria-hidden="true">®</span></a>
     <nav class="site-nav" aria-label="Main navigation">
-      <a href="/work/egnyte/" aria-current="page">Work</a>
-      <a href="/film/">Film</a>
-      <a href="/sound/">Sound</a>
-      <a href="/notes/">Notes</a>
-      <a href="/about/">About</a>
+      <div class="nav-item has-menu">
+        <a class="nav-top" aria-current="page" href="/work/egnyte/">Work</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-work" aria-label="Show all work"><span aria-hidden="true">▾</span></button>
+        <ul class="nav-menu" id="menu-work">
+          <li><a aria-current="page" href="/work/egnyte/">Egnyte <span>UX research</span></a></li>
+          <li><a href="/work/mercor/">Mercor <span>AI design evaluation</span></a></li>
+          <li><a href="/work/spotify-weather/">Spotify × Weather <span>Data science</span></a></li>
+        </ul>
+      </div>
+      <div class="nav-item has-menu">
+        <a class="nav-top" href="/film/">Film</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-film" aria-label="Show all films"><span aria-hidden="true">▾</span></button>
+        <ul class="nav-menu" id="menu-film">
+          <li><a href="/film/journey-to-mars/">Journey to Mars <span>2022</span></a></li>
+          <li><a href="/film/digital-redlining/">Digital Redlining <span>2025</span></a></li>
+        </ul>
+      </div>
+      <a class="nav-top" href="/sound/">Sound</a>
+      <a class="nav-top" href="/notes/">Notes</a>
+      <a class="nav-top" href="/about/">About</a>
       <a href="mailto:rochopra99@gmail.com">Contact ↗</a>
     </nav>
   </header>
@@ -40,7 +55,7 @@
         <h1>Research that became a roadmap</h1>
         <p class="standfirst">Egnyte's AI features were live. Usage lagged anyway. I ran an end-to-end research study to find out why, then turned the answer into a prioritized product roadmap.</p>
         <dl class="spec">
-          <dt>Role</dt><dd>UX/UI Design Intern · sole researcher, end to end</dd>
+          <dt>Role</dt><dd>AI and UX/UI Research Intern · designed and ran the study end to end</dd>
           <dt>Timeline</dt><dd>January to April 2026</dd>
           <dt>Method</dt><dd>Interviews and surveys, behavioral segmentation, thematic coding</dd>
           <dt>Output</dt><dd>Prioritized five-agent roadmap; informed AI product strategy</dd>
